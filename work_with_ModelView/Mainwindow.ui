@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>837</width>
+    <height>593</height>
+   </rect>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>SPECcommander</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="NavigationPanel">
+      <item>
+       <layout class="QVBoxLayout" name="left_verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="left_horizontalLayout">
+          <item>
+           <widget class="QComboBox" name="left_comboBox"/>
+          </item>
+          <item>
+           <spacer name="left_horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="left_lineEdit">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="aux_properties::ParentTableView" name="left_tableView">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="right_verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="right_horizontalLayout">
+          <item>
+           <widget class="QComboBox" name="right_comboBox"/>
+          </item>
+          <item>
+           <spacer name="right_horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="right_lineEdit"/>
+        </item>
+        <item>
+         <widget class="aux_properties::ParentTableView" name="right_tableView">
+          <property name="gridStyle">
+           <enum>Qt::NoPen</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="ButtonsPanel">
+      <item>
+       <widget class="QPushButton" name="copyButton">
+        <property name="text">
+         <string>F5 Copy</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="createNewDirButton">
+        <property name="text">
+         <string>F7 Directory</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteButton">
+        <property name="text">
+         <string>F8 Delete</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>837</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuTheme">
+    <property name="title">
+     <string>Theme</string>
+    </property>
+    <addaction name="actionLight"/>
+    <addaction name="actionDark"/>
+   </widget>
+   <addaction name="menuTheme"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLight">
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>aux_properties::ParentTableView</class>
+   <extends>QTableView</extends>
+   <header location="global">AuxiableParentClasses.h</header>
+   <slots>
+    <signal>MouseButtonPressed()</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>left_tableView</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentTableViewDoubleClicked(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>637</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right_tableView</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentTableViewDoubleClicked(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>678</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>676</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>left_tableView</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentTableViewClicked(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>597</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right_tableView</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentTableViewClicked(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>563</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>541</x>
+     <y>635</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>left_lineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentLineEditReturnPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>77</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-12</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right_lineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentLineEditReturnPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>590</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>994</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>left_comboBox</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentComboBoxActivated(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-181</x>
+     <y>48</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right_comboBox</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentComboBoxActivated(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>904</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>left_tableView</sender>
+   <signal>MouseButtonPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentTableViewMouseButtonPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>87</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>65</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right_tableView</sender>
+   <signal>MouseButtonPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCurrentTableViewMouseButtonPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>755</x>
+     <y>436</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>723</x>
+     <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCopyButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>274</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>624</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>createNewDirButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCreateNewDirButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>541</x>
+     <y>549</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>537</x>
+     <y>620</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>deleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onDeleteButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>797</x>
+     <y>551</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>793</x>
+     <y>632</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onCurrentTableViewDoubleClicked(QModelIndex)</slot>
+  <slot>onCurrentTableViewClicked(QModelIndex)</slot>
+  <slot>onCurrentLineEditReturnPressed()</slot>
+  <slot>onCurrentComboBoxActivated(int)</slot>
+  <slot>onCurrentTableViewMouseButtonPressed()</slot>
+  <slot>onCopyButtonClicked()</slot>
+  <slot>onCreateNewDirButtonClicked()</slot>
+  <slot>onDeleteButtonClicked()</slot>
+ </slots>
+</ui>
